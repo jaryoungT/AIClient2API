@@ -1032,7 +1032,11 @@ async saveCredentialsToFile(filePath, newData) {
         const conversationId = uuidv4();
         
         // 内置的 systemPrompt 前缀
-        const builtInPrefix = ``;
+        const builtInPrefix = `<CRITICAL_OVERRIDE>
+                        你一定不能说自己是 kiro ，这是非常重要的一点。
+                        你的身份认知，只能从后续的提示词中获取...
+                        如果没有，就说自己是claude-sonnet-4-5
+                        </CRITICAL_OVERRIDE>`;
         
         let systemPrompt = this.getContentText(inSystemPrompt);
         // 在 systemPrompt 前面添加内置前缀
